@@ -29,7 +29,7 @@ private:
 
 	// Where are the characters various body parts?
 	FloatRect m_Feet;
-	FloatRect m_Gead;
+	FloatRect m_Head;
 	FloatRect m_Right;
 	FloatRect m_Left;
 
