@@ -25,6 +25,28 @@ void Engine::update(float dtAsSeconds)
 		m_Thomas.update(dtAsSeconds);  // update Thomas
 		m_Bob.update(dtAsSeconds);  // update Bob
 
+		// Detect collisions and see if characters have reached the goal tile
+		if (detectCollisions(m_Thomas) && detectCollisions(m_Bob))
+		{
+			// New level required
+			m_NewLevelRequired = true;
+		}
+		else
+		{
+			//Run bobs collision detected
+			detectCollisions(m_Bob);
+		}
+
+		// Let Bob and Thomas jump on each others head
+		if (m_Bob.getFeet().intersects(m_Thomas.getHead()))
+		{
+			m_Bob.stopFalling(m_Thomas.getHead().top);
+		}
+		else if (m_Thomas.getFeet().intersects(m_Bob.getHead()))
+		{
+			m_Thomas.stopFalling(m_Bob.getHead().top);
+		}
+
 		// Count down the time the player has left
 		m_TimeRemaining -= dtAsSeconds;
 
