@@ -15,6 +15,8 @@ void Engine::loadLevel()
 	// and repopulate the vertex array as well
 	m_ArrayLevel = m_LM.nextLevel(m_VALevel);
 
+	populateEmitters(m_FireEmittets, m_ArrayLevel);  // prepare populate emitters
+
 	m_TimeRemaining = m_LM.getTimeLimit();	// how long is this new time limit
 
 	// Spawn Thomas and Bob

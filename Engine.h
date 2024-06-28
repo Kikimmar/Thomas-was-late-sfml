@@ -4,6 +4,8 @@
 #include "Thomas.h"
 #include "Bob.h"
 #include "LevelManager.h"
+#include "SoundManager.h"
+#include "HUD.h"
 
 using namespace sf;
 
@@ -16,6 +18,12 @@ private:
 	Bob m_Bob;
 
 	LevelManager m_LM;
+
+	SoundManager m_SM;
+
+	Hud m_Hud;
+	int m_FramesSinceLastHUDUpdate = 0;
+	int m_TargetFramesPerHUDUpdate = 500;
 
 	const int TILE_SIZE = 50;
 	const int VERTS_IN_QUAD = 4;
@@ -66,6 +74,12 @@ private:
 	void loadLevel(); // load a new level
 
 	bool detectCollisions(PlayableCharacter& character);
+
+	// Make a vector of the best plasec to emit sounds from
+	void populateEmitters(vector <Vector2f>& vSoundEmitters, int** arrayLevel);
+
+	// A vector of Vector2f for the fire emitter locations
+	vector <Vector2f> m_FireEmittets;
 
 public:
 	Engine();

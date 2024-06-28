@@ -41,6 +41,12 @@ void Engine::draw()
 
 	//Draw the HUD
 	m_Window.setView(m_HudView);  // Switch to m_HudView
+	m_Window.draw(m_Hud.getLevel());
+	m_Window.draw(m_Hud.getTime());
+	if (!m_Playing)
+	{
+		m_Window.draw(m_Hud.getMessage());
+	}
 
 	m_Window.display();  // Show everything we have just draw
 }
