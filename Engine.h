@@ -51,6 +51,9 @@ private:
 	Sprite m_BackgroundSprite;
 	Texture m_BackgroundTexture;
 
+	// Declare a shader for the background
+	Shader m_RippleShader;
+
 	bool m_Playing = true;  //Is the game currently playing
 
 	bool m_Character1 = true;  //Is character 1 or 2 current focus
